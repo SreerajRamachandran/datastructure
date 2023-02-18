@@ -1,0 +1,72 @@
+#include <stdio.h>
+int stack[100], choice, i, size, top, x;
+
+void push();
+void pop();
+void display();
+
+int main() {
+    top = -1;
+    printf("\n\tEnter the size of the stack: ");
+    scanf("%d", &size);
+    printf("\n\tStack operations using array\n\t");
+    printf("\n\t-------------******---------------");
+    printf("\n\t1.Push\n\t2.Pop\n\t3.Display\n\t");
+
+    do {
+        printf("\nEnter any choice: ");
+        scanf("%d", &choice);
+        switch (choice) {
+            case 1: {
+                push();
+                break;
+            }
+            case 2: {
+                pop();
+                break;
+            }
+            case 3: {
+                display();
+                break;
+            }
+            default: {
+                printf("Enter a valid choice.");
+                break;
+            }
+        }
+    } while (choice != 4);
+    return 0;
+}
+
+void push() {
+    if (top >= size - 1) {
+        printf("Overflow");
+    } else {
+        printf("Enter the value: ");
+        scanf("%d", &x);
+        top++;
+        stack[top] = x;
+        printf("Value inserted successfully.\n");
+    }
+}
+
+void pop() {
+    if (top <= -1) {
+        printf("Underflow");
+    } else {
+        printf("Popped element is %d\n", stack[top]);
+        top--;
+    }
+}
+
+void display() {
+    if (top >= 0) {
+        printf("\nStack elements are:\n");
+        for (i = top; i >= 0; i--) {
+            printf("%d\n", stack[i]);
+        }
+        printf("Enter the next choice.\n");
+    } else {
+        printf("Stack is empty.\n");
+    }
+}
